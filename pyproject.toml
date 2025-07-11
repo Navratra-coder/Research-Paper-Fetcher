@@ -1,0 +1,44 @@
+[tool.poetry]
+name = "pubmed-pharma-papers"
+version = "0.1.0"
+description = "A Python program to fetch research papers from PubMed with pharmaceutical/biotech company affiliations"
+authors = ["Your Name <your.email@example.com>"]
+readme = "README.md"
+packages = [{include = "pubmed_pharma_papers"}]
+
+[tool.poetry.dependencies]
+python = "^3.12"
+requests = "^2.31.0"
+xmltodict = "^0.13.0"
+click = "^8.1.0"
+pandas = "^2.0.0"
+email-validator = "^2.1.0"
+
+[tool.poetry.group.dev.dependencies]
+pytest = "^7.4.0"
+black = "^23.0.0"
+flake8 = "^6.0.0"
+mypy = "^1.5.0"
+types-requests = "^2.31.0"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.poetry.scripts]
+get-papers-list = "pubmed_pharma_papers.cli:main"
+
+[tool.black]
+line-length = 79
+target-version = ['py312']
+skip_magic_trailing_comma = true
+
+[tool.mypy]
+python_version = "3.12"
+warn_return_any = true
+warn_unused_configs = true
+disallow_untyped_defs = true
+
+[[tool.mypy.overrides]]
+module = "xmltodict"
+ignore_missing_imports = true
